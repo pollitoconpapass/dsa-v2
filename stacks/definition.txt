@@ -1,0 +1,41 @@
+DEFINITION: Linear data structure which operates in a LIFO pattern. 
+- Its an abstract data type with a bounded (predefined capacity)
+- You can add and remove elements in a particual order: (Last in first out)
+
+
+WORKING OF A STACK:
+Computer Memory
+ | 1000    | 1002 |
+1|         |      |
+2|         |      |
+3|         |      |
+4|         |      |
+5|         |      |
+
+If you want to enter numbers from 10 to 14...
+
+5|    14     |
+4|    13     |
+3|    12     |
+2|    11     |
+1|    10     |
+
+* The first to enter will be placed at the bottom. And the last to enter, will be placed at the top. 
+* Which means, there's only one way of enter and exit. 
+
+
+STANDARD OPERATIONS:
+1) push() -> Place an item onto the stack
+2) pop() -> Return the item at the top and remove it
+3) isEmpty() -> Tells if the stack is empty or not
+4) isfull() -> Tells if the stack is full or not
+5) peek() -> Access the item at the i position
+6) count() -> Get the number of items in the stack
+7) change() -> Change the item at the i position
+8) display() -> Display all items in stack
+
+
+APPLICATIONS OF STACKS:
+- Redoundo features at places like editors, photoshop. (ctrl-z)
+- Forward and backward features in web browsers
+- Tower of Hanoi, Tree Transversals, and many other algorithms

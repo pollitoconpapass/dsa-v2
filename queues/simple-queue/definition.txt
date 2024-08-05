@@ -1,0 +1,26 @@
+DEFINITION: Linear data structure which operates in a FIFO way. 
+- Is an abstract data type with bounded capacity.
+- Allows adding and removing elements in a particual order (First in First out)
+
+  
+WORKING OF A QUEUE:  
+  Front             Rear
+=   0  |  1 |  2  |  3   =
+
+* elements are added in the Rear, called Enqueue
+* elements are removed in the Front, called Dequeue
+
+
+STANDARD OPERATIONS
+1) enqueue() -> Elements are added from one end (rear)
+2) dequeue() -> Elements are removed from the other end (front)
+3) isFull() -> Check if the queue is full 
+4) isEmpty() -> Check if the queue is empty
+5) count() -> Gets the count of total items inside the queue  
+
+
+APPLICATIONS
+- CPU and Disk scheduling
+- Handling of interrupts real-time systems. (The interrupts are handled in the same order they arrive)
+- Call center phone systems use Queues to hold people calls
+- When data is transferred asynchronously between 2 processes, queue is used for synchronization

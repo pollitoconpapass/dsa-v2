@@ -1,0 +1,52 @@
+DEFINITION: Is useful for adding more elements to a 'normal' queue, when this one, has been dequeued. 
+
+EXAMPLE: 
+When you have a queue of size 4 its something like this:
+  x |  x  |  x  |  x  | 
+  (front = -1 and rear = -1)
+
+If we do an enqueue(5):
+  5 |  x  |  x  |  x  |
+  (front = 0 and rear = 0)
+
+enqueue(4):
+  5 |  4  |  x  |  x  |
+  (front = 0 and rear = 1)
+
+enqueue(6):
+  5 |  4  |  6  |  x  |
+  (front = 0 and rear = 2)
+
+enqueue(8):
+  5 |  4  |  6  |  8  |
+  (front = 0 and rear = 3)
+
+Now the whole queue is full...
+If we want to dequeue():
+  x |  4  |  6  |  8  |
+  (front = 1 and rear = 3)
+
+dequeue() again:
+  x |  x  |  6  |  8  |
+  (front = 2 and rear = 3)
+
+and again dequeue():
+  x |  x  |  x  |  8  |
+  (front = 3 and rear = 3) 
+
+When you got the queue this way, and then call the function isFull(), you will receive True as an output.
+
+(Because rear == 3, it doesn't matter if you have eliminated some values. Also, as it is full we cannot add or enqueue any more values.)
+
+
+REPRESENTATION:
+        x  | x
+       --    --
+        x  |  x
+
+In here, if the whole queue is full, it will loo like this: 
+
+front / rear
+          8  | 5    <- also rear
+         --    --
+          6  | 4
