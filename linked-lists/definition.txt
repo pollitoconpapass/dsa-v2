@@ -1,0 +1,51 @@
+DEFINITION: Is a linear data structure, in which the elements are not stored at contigous memory locations. 
+The elements are linked using "pointers" (entity that point to the next element, NOT exactly C++ pointers)
+
+Consists of nodes where each node contains a data field and a reference (link) to the next one in the list.
+
+WORKING OF LINKED LIST:
+1) Node/Link/Element/Object
+- Each node consists of two parts: data and link to the next node
+
+2) Next
+- Points to the next node/element in the linked list
+
+PROS AND CONS: (compared to arrays)
+Advantages:
+- Dynamic Size -- when you create an array of size 6 and not using them all, the memory will reserve it anyways.
+- Ease of insertion / deletion -- When you sort an array in a particual order, you will have more steps to delete and insert.
+
+Disadvantages:
+- Random access is not allowed -- to access a random element in an array: arr[2]. For linked lists, you have to start from the beginning until reaching the element you want.
+- Extra memory space for a pointer is required with each element of the list -- as a linked list element is always accompanied by a "pointer"
+- Not cache friendly -- Linked lists are placed anywhere in the whole memory.
+
+
+OPERATIONS OF A LINKED LIST:
+1) Traversing a linked list -> Moving across a linked list to obtain a desired element.
+2) Append a new node -> Adding a new element to the end of the list.
+3) Prepend a new node -> Add a new element to the top (beginning) of the list.
+4) Insert a new node to a specific position in the list -> "it's exactly what it says..."
+5) Delete a node -> Erase a node from the list.
+6) Updating a node -> Update the value of an element in the list.
+
+
+TYPES OF LINKED LIST:
+1) Singly Linked List
+                        D|N --> D|N --> D|N     "You can't go back"
+
+2) Doubly Linked List
+                        P|D|N <--> P|D|N <--> P|D|N    "You can go forwards and backwards"
+
+3) Circular Linked List
+                        D|N --> D|N --> D|N --         "You can return to the beginning"
+                        ^____________________|
+
+D: Data  
+N: Node
+P: Previous
+
+
+APPLICATIONS OF LINKED LIST:
+- Can be used in Stacks, Queues, Graphs, and more DS
+- Undo functionality in Word, Photoshop. (Linked list of states)
