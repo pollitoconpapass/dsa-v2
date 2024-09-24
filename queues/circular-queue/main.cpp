@@ -14,7 +14,7 @@ private:
 public:
   CircularQueue(){
     itemCount = 0;
-    front = -1;  // -> now there is front and rear becaue there is
+    front = -1;  // -> now there is front and rear because there is
     rear = -1;  // -> one exit and one entrance
     for (int i=0; i<5; i++){
       arr[i] = 0;
