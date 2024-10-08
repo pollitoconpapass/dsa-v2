@@ -1,0 +1,20 @@
+Sorting Algorithms
+
+DEFINITION: 
+Are used to rearrange a given array or list DS elements according to a particular pattern (ascending, descending, etc).
+The comparison operator is used to decide the new order of elements in the respective data structure.
+
+WHY DO WE NEED THEM?
+1. Efficient sorting is important for optimizing the efficiency of other algorithms which require input data to be sorted in lists
+2. Producing more human readable output.
+3. It's easier and faster to locate items in a sorted list.
+
+Types of Sorting Algorithms:
+- Selection Sort
+- Bubble Sort
+- Insertion Sort
+- Merge Sort
+- Quick Sort
+- Heap Sort
+- Radix Sort
+- Shell Sort

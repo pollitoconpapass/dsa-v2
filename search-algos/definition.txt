@@ -1,0 +1,25 @@
+Searching Algorithms
+
+DEFINITION: Are designed to check for an element or retrieve an element from any data structure where it is stored. 
+Based on the type of search operation, these algorithms are generally classified into 2 categories:
+
+1. Sequential Search
+- In this, the list or array is traversed sequentially and every element is checked. 
+(Linear Search)
+
+   0   1    2     3    4
+| 55 | 62 | 75 | 78 | 11 |
+
+To look for the number 75, it should iterate over the whole array checking each index for the number 75.
+
+
+2. Interval Search
+- These algorithms are specifically designed for searching in sorted-data structures. These types of search
+algorithms are much more efficient than Linear Search as they repeatedly target the center of the search 
+structure and divide the search space in half.
+(Binary Search)
+
+
+| 11 | 55 | 62 | 75 | 78 |
+
+To look for 75, it will divide the array in two looking for the segment containing the number 75. 

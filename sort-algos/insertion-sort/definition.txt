@@ -1,0 +1,16 @@
+DEFINITION: Is a simple sorting algorithm that works the way we sort playing cards in our hands. It builds the final sorted 
+array one item at a time. 
+Efficient for small datasets, much like other quadratic sorting algorithms. Time complexity: O(n^2)
+
+WORKING:
+1. Pick the next element
+
+2. Compare it with all elements in the sorted sub-list on the left
+
+3. Shift all the elements in the sorted sub-list that is greater than the value to be sorted
+
+4. Insert the value
+
+5. Repeat until the list is sorted completely.
+
+(It will make more sense when we implement the algorithm)

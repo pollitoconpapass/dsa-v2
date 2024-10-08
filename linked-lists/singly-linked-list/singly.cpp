@@ -162,6 +162,30 @@ public:
             cout << endl;
         }
     }
+
+    // 8. Reverse the linked list
+    void reverseLinkedList(){
+        if (head == NULL){
+            cout << "The list is empty. Cannot reverse." << endl;
+        }
+        else {
+            Node *prev = NULL;
+            Node *current = head;
+            Node *nextNode = NULL;
+
+            while (current != NULL){
+                nextNode = current->next; // -> nextNode will have the address of the next node of the head
+                current->next = prev;  // -> the next node of current will be assigned to prev (the previous node -> will be NULL initially)
+                prev = current; // -> prev takes the address of the current node
+                current = nextNode; // -> current will be now nextNode, (that had the next node of the current one)
+            }
+
+            // The process is gonna repeat changing the next pointer of each current node to the previous node (actually reversing the list)
+
+            head = prev; // -> prev will be iterating until the last element... we make the last element now the head (we're reversing)
+            cout << "List reversed successfully" << endl;
+        }
+    }
 };
 
 
@@ -179,7 +203,8 @@ void Menu(){
         cout << "4. deleteNodeByKey()" << endl;
         cout << "5. updateNodeByKey()" << endl;
         cout << "6. showLinkedList()" << endl;
-        cout << "7. Clear the Screen" << endl;
+        cout << "7. reverseLinkedList()" << endl;
+        cout << "8. Clear the Screen" << endl;
 
         cout << "Option: " ; 
         cin >> option;
@@ -242,6 +267,10 @@ void Menu(){
                 break;
 
             case 7: 
+                linkedList.reverseLinkedList();
+                break;
+
+            case 8: 
                 system("cls");
                 break;
 
@@ -251,7 +280,7 @@ void Menu(){
 
         }
 
-    } while (option <= 7 || option >= 1);
+    } while (option <= 8 || option >= 1);
 }
 
 int main(){
