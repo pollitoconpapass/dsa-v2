@@ -1,0 +1,70 @@
+DEFINITION: Is a 'Divide and Conquer' algorithm. It divides input array in two halves (recursively) and then merges the two sorted halves.
+An extra merge() function is used for merging 2 halves. 
+
+- Merge sort is one of the most efficient sorting algorithms. 
+Time Complexity: O(log(n))
+
+
+WORKING:
+Receive as parameters: arr[], left, right
+
+1. Find the middle point to divde the array in two halves: 
+middle = m = (left + right) / 2
+
+2. Call merge sort for first half:
+mergeSort(arr, left, m) 
+- From left to the middle
+
+3. Call merge sort for the second half:
+mergeSort(arr, m + 1, right)
+- Fromt the middle + 1 (value at right) to the right
+
+4. Merge the two halves sorted in step 2 and 3
+merge(arr, left, m, right)
+
+
+PSEUDOCODE:
+mergeSort(arr[], left, right){
+    if(left < right){
+        m = (left + right)/2
+        mergeSort(arr, left, m) // -> recursion
+        mergeSort(arr, m + 1, right)  // -> recursion
+        merge(arr, left, m, right)
+    }
+}
+
+
+HOW DOES merge() WORK?
+merge(arr, left, m, right){
+    i = left; j = m + 1; k = left; // -> i is gonna be the first index element of the left subarray while j is having the first infex of the right subarray.
+    temp[] // -> create a temporary array
+
+    while(i <= m && j <= right) { // -> because i (as the left subarray) can only go until the middle, and j (as the right subarray) can only go until the right
+        if(arr[i] <= arr[j]){ // -> if the element in the left subarray is lesser than the one in the right
+            temp[k] = arr[i] // -> then store it in the temporary array
+            i++; k++; // -> iterate through the left and temporary subarray (not to the right one (j), because we are still gonna compare that index (j) with the next index (i++) of this left subarray)
+        }
+        else { // -> but if the element in the right subarray is lesser than the one in the left subarray
+            temp[k] = arr[j] //-> then store it in the temporary array
+            j++; k++; //-> iterate through the right and temporary subarray 
+        }
+    }
+
+
+    // When the (i <= m && j <= right) condition is over, and there's still some values left in either subarrays... (is either one or the other, it cannot be both (that have values left))
+
+    while(i <= m){ // -> either the left subarray is not iterated completely
+        temp[k] = arr[i] // -> fill the temporary array
+        i++; k++; // -> iterate over the subarray and temporary array
+    }
+
+    while(j <= right){ // -> ether if the right subarray hasn't reached its limit in the while(i <= m && j <= right)
+        temp[k] = arr[j] // -> fill the temporary array
+        j++; k++;  // -> iterate over the subarray and temporary array
+    }
+
+    for(int p = left; p<= right; p++){ // -> go through the whole temp array (left 2 right)
+        arr[p] = temp[p] // -> replace the values inside the original array with the ones in the temp array (which values are already sorted)
+    }
+        
+}

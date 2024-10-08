@@ -1,0 +1,21 @@
+DEFINITION: Is specifically an in-place comparison sorted. It has O(n^2) time complexity, making it inefficient on large lists.
+
+WORKING: 
+Let's pretend we have this (unsorted) array of numbers:
+
+| 64 | 25 | 12 | 22 | 11 |
+ (0)  (1)   (2) (3)  (4)    -> positions
+
+1. Find minimum element and place it at position 0. 
+- We create a division between the (now sorted sub array and an unsorted sub array)
+
+       | 11 | 25 | 12 | 22 | 64 |
+ SORTED SUB |  UN SORTED SUB ARRAY
+   ARRAY    |
+
+2. Find the 2nd minimum element and place it at position 1.
+ | 11 | 12 | 25 | 22 | 64 |
+SORTED SUB |  UN SORTED SUB ARRAY
+  ARRAY    |
+
+3. ... and so on with all the other elements in the list

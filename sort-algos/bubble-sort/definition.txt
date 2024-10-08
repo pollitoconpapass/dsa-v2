@@ -1,0 +1,13 @@
+DEFINITION: Is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
+This is more suitable for smaller datasets. It's known as 'bubble sort' because with every complete iteration the largest elements
+bubbles up towards the last place just like a water bubble rises up to the water surface. 
+Time Complexity: O(n^2)
+
+WORKING: 
+1. Starting with the first element (index=0), compare the current element with the next element of the array.
+
+2. If the current value is greater, swap them.
+
+3. If it is lesser than, move to the next element.
+
+4. Repeat Step 1 until the list is sorted.
