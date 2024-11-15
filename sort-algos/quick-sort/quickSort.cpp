@@ -1,36 +1,31 @@
 #include <iostream>
 using namespace std;
 
-// int swap(int &num1, int &num2){
-//     int temp = num1;
-//     num1 = num2;
-//     num2 = temp;
-// }
+void swap(int &num1, int &num2){
+    int temp = num1;
+    num1 = num2;
+    num2 = temp;
+}
 
 int Partition(int arr[], int start, int end){
     int pivot = arr[end]; // -> we assign pivot to the last element of the array
     int pIndex = start;  // -> this is gonna keep a track of the elements that are smaller
                         // ... and will increment everytime a smaller element is swapped to the left.
 
-    for(int i=start; i < (end - 1); i++){ // -> It's i till end -1 because the pivot is already at the end. No need to compare them...
+    for(int i=start; i < end; i++){ 
         // All the elements are gonna be compared with the pivot:
-        if(arr[i] <= pivot){ // -> if the element is smaller or equal to the pivot...
-            // swap the positions of that element to the pIndex which at the start of the algorithm the pIndex is gonna be the start 
+        if(arr[i] < pivot){ // -> if the element is smaller or equal to the pivot...
+            // swap the positions of that element to the pIndex, which at the start of the algorithm, it is gonna be the start 
             // (so it will take the element to the 'start' or the 'beginning')
-            int temp = arr[i];
-            arr[i] = pivot;
-            pivot = temp;
-
+            swap(arr[i], arr[pIndex]);
             pIndex++; // -> increment the pIndex to not replace the one already placed.
 
         }
     }
 
     // We will send the pivot element to the 'between' of the array 
-    int temp = arr[end]; // -> as the pivot element is the last of the list we use arr[end]
-    arr[end] = arr[pIndex];
-    arr[pIndex] = temp;
-
+    swap(arr[end], arr[pIndex]); // -> as the pivot element is the last of the list we use arr[end]
+    
     // where all the elements at its left are smaller, and all elements at its right are greater
     // (there's where we want to generate a partition, at the left and right of that 'pivot')
 
