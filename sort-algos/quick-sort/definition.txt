@@ -1,1 +1,14 @@
-DEFINITION: 
+DEFINITION: Is a divide and conquer algorithm. Picks an element as 'pivot' and partitions the given array arround the picked pivot.
+
+There are different versions of performing the quicksort that pick the pivot in different ways:
+1. Always pick the first element as 'pivot'
+2. Always pick the last element as 'pivot'
+3. Pick a random element as 'pivot'
+(We will be using opt. 2)
+
+Quick sort is considered as 'in-place'sorting algorithm. It reduces the space complexity and removes the use of the auxiliary 
+array that is used in merge sort.
+
+- Is one of the most efficient sorting algorithms. 
+>> Time complexity: O(n log(n))
+>> Space complexity: O(log(n))

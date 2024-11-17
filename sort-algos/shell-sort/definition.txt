@@ -1,0 +1,90 @@
+DEFINITION: Is an in-place comparison sort. Is mainly a variation of sorting by exchange (bubble sort) or sorting by 
+            insertion (insertion sort)
+            This algorithm avoids large shifts as in case of insertion sort, if the smaller value is to the far right 
+            and has to be moved to the far left. 
+
+            The idea of 'Shell Sort' is to allow exchange of far (at a particular gap/interval) items fast. This spacing
+            is called interval or gap.
+
+            Example: GAP = n / 2 (where n is the size of the array)
+
+- Shell Sort is more efficient compared to Insertion Sort or Bubble Sort specially when:
+1. Smaller value elements are towards the end of the array
+2. Large sized array
+3. Efficiency depends on how we select the gap/interval
+
+>> Time Complexity: 
+- Best case -> Ω(n log(n))
+- Worst case -> O(n^2) // -> like insertion, selection and bubble sort
+- Average case -> θ(n log(n)^2)
+
+>> Space Complexity:
+(Auxiliary Space) -> O(1)
+
+
+WORKING: 
+1. Take input array and size as 'n'
+int arr[9] = {170, 75, 802, 90, 66, 2, 24, 45, 7}
+size = n = 9
+
+2. Initialize the value of gap 
+(we are taking: n/2)
+- For first pass: 
+gap = n/2 = (9/2) = 4.5 -> 4
+
+- For second pass:
+n = 4 
+gap = n/2 = (4/2) = 2
+
+- For the third pass:
+n = 2
+gap = n/2 = (2/2) = 1
+
+... and so on until we got gap = 0
+
+3. Compare 2 elements at the distance of gap at every iteration
+Example: arr = {170, 75, 802, 90, 66, 2, 24, 45, 7}
+                0    1    2    3   4  5   6  7   8
+
+- We compare the first element arr[0] with the other element considering the gap. 
+(as the gap is 4)
+Compare: 170 and 66
+
+4. If element at the left is larger than element at the right, perform the swap. If a swap is done, then compare gap indexes BEHIND as well if possible
+(either using bubble or insertion sort)
+As 170 (element at left) is larger than 66 (element at right)
+We perform the swap with 'Bubble Sort' or 'Insertion Sort'
+
+arr = {66, 75, 802, 90, 170, 2, 24, 45, 7}
+        0   1   2    3   4   5   6   7  8
+
+As we performed the swapping 4 indexes ahead was made, we should do the comparison for 4 indexes behind (with the new value)... 
+BUT as there is no possible index, we skip that part.
+(The comparison 'gap' indexes behind is only done when a swapping 'gap' indexes ahead is made)
+
+5. Repeat until the whole list is sorted 
+### i = 1 ###
+- STEP 3: Now we go with arr[1]...
+(as the gap is still 4, we compare the element at 4 indexes of distance)
+Compare 75 and 2
+
+- STEP 4: Swap if element at left is greater
+We perform 'Bubble Sort':
+arr = {66, 2, 802, 90, 170, 75, 24, 45, 7}
+        0  1   2   3    4   5   6   7   8
+
+### i = 2 ###
+- STEP 3: Now we go with arr[2]...
+(as the gap is still 4, we compare the element at 4 indexes of distance)
+Compare 802 and 24
+
+- STEP 4: Swap if element at left is greater
+We perform 'Bubble Sort':
+arr = {66, 2, 24, 90, 170, 75, 802, 45, 7}
+        0  1   2   3    4   5   6   7   8
+
+### AND SO ON... AND SO ON... EVEN CHANGING gap VALUE TO: gap/2. AS SAID IN STEP 2
+MIND THAT WE HAVE TO COMPARE 'gap' INDEXES BEHIND IF A SWAP IS MADE AND ONLY WHEN IT IS POSSIBLE TO GO 'gap' INDEXES BEHIND
+
+SUMMARY = Compare: arr[i] with arr[i+gap] 
+# (and when a swap is made and it is possible) Compare: arr[i] with arr[i-gap]

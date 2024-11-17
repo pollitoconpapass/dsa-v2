@@ -1,0 +1,100 @@
+DEFINITION: Is a sorting algorithm that sorts the elements of an array by counting the number of occurrences of each
+            unique element in the array. 
+            
+            The count is stored in an auxiliary array and the sorting is done by mapping the count as an index of the 
+            auxiliary array. This mapping is done by performing arithmetic calculations on those counts to determine 
+            the positions of each key value (unique element) in the output sequence. 
+
+- It is often used as a subroutine in another sorting algorithm, radix sort, that can handle larger keys more efficiently.
+- It is NOT a comparison sort.
+
+>> Time complexity: O(n+k)
+>> Space complexity: O(n+k)
+
+
+WORKING:
+int arr[7] = {1, 4, 1, 2, 7, 5, 2}
+size = 7 
+(range: 0 - 9)  -> size = 10
+
+1. Take input array and range 
+int inputArr[7] = arr
+
+2. Create the output array of size equal to the range and initialize all values to 0
+int outputArr[7] = {0, 0, 0, 0, 0, 0, 0}
+
+3. Count each element in the input array and place the count at the appropiate index of the count array
+inputArr = {1, 4, 1, 2, 7, 5, 2}
+
+- Take each value of the input array and search that same number but as index in the countArr and increment in 1
+
+                    0  1  2  3  4  5  6  7  8  9
+int countArr[10] = {0, 2, 2, 0, 1, 1, 0, 1, 0, 0} // -> the array is size of range
+
+(Whichever elements are present in the input array are mapped in the INDEXES of the count array. And make a +1 in that index.)
+
+4. Modify the count array by adding the previous counts (cumulative). The modified count array indicates the position of each element in the output array
+countArr = {0, 2, 2, 0, 1, 1, 0, 1, 0, 0}
+
+- Take each value in the count aray and sum n + (n+1) and place it at countArr[n+1]
+Ex: For the first time... sum countArr[0] + countArr[1] and place it at countArr[1]
+                                    0     +     2   = 2    -> countArr[1] = 2
+
+    For the second time... sum countArr[1] + countArr[2] and place it at countArr[2]
+                                    2      +     2  = 4    -> countArr[2] = 4
+* Mantain the updated number for the next iteration
+
+countArr = {0, 2, 4, 4, 5, 6, 6, 7, 7, 7}
+
+5. Output each object from the input array into the sorted output array
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+countArr = {0, 2, 4, 4, 5, 6, 6, 7, 7, 7}
+
+INDEX:       0, 1, 2, 3, 4, 5, 6
+outputArr = {0, 0, 0, 0, 0, 0, 0}
+POSITION:    1, 2, 3, 4, 5, 6, 7
+
+
+=== EXAMPLE ===
+Take index 1 of 'countArr' it says 2, which we interpret as range with position in the 'outputArr'. (1-2) and place the index number as value in 'outputArr'
+So.... outputArr = {1, 1, 0, 0, 0, 0, 0}
+       POSITION:    1, 2, 3, 4, 5, 6, 7
+
+Now index 2 of 'countArr' it says 4, which we interpret as range with position in the 'outputArr'. (2-4) and place the index number as value in 'outputArr'
+So... outputArr = {1, 1, 2, 2, 0, 0, 0}
+      POSITION:    1, 2, 3, 4, 5, 6, 7
+
+Take index 3 of 'countArr' it says 4, which we interpret as range with position in the 'outputArr'. (3-4) and place the index number as value in 'outputArr'
+* BUT POSITIONS 3 and 4 OF 'outputArr' ALREADY HAVE DATA INSIDE, WE SKIP IT
+
+Take index 4 of 'countArr' it says 5, which we interpret as range with position in the 'outputArr'. (4-5) and place the index number as value in 'ouputArr'
+* AS POSITION 4 ALREADY HAVE DATA, WE JUST PLACE IT AT POSITION 5
+   outputArr = {1, 1, 2, 2, 4, 0, 0}
+   POSITION:    1, 2, 3, 4, 5, 6, 7
+
+Take index 5 of 'countArr' it says 6, which we interpret as range with position in the 'outputArr'. (5-6) and place the index number as value in 'ouputArr'
+* AS POSITION 5 ALREADY HAVE DATA, WE JUST PLACE IT AT POSITION 6 
+    outputARR = {1, 1, 2, 2, 4, 5, 0}
+    POSITION:    1, 2, 3, 4, 5, 6, 7
+
+Take index 6 of 'countArr' it says 6, which we interpret as range with position in the 'outputArr'. (6-6) and place the index number as value in 'ouputArr'
+* BUT POSITIONS 6 and 6 OF 'outputArr' ALREADY HAVE DATA INSIDE, WE SKIP IT
+
+Take index 7 of 'countArr' it says 7, which we interpret as range with positon in the 'outputArr'. (7-7) and place the index number as value in the 'outputArr'
+    outputArr = {1, 1, 2, 2, 4, 5, 7}
+    POSITION:    1, 2, 3, 4, 5, 6, 7
+
+* As now all the positions inside outputArr are covered... WE FINISHED THE SORTING!
+
+(RESUME)
+- Take the index of countArr (starting by 1), obtain the value at that index. 
+- Interpret that as a range: (index- countArr[index])
+- Place the index number as value in the POSITION range inside the outputArr. 
+    Ex: (1-2) -> Place number 1 at the POSITION 1 and 2 of 'outputArr'
+
+- If the position already have data, skip it. DO NOT REPLACE
+- Finish until ALL the positions of outputArr are filled
+
+
+6. Return the sorted output array
+outputArr = {1, 1, 2, 2, 4, 5, 7}

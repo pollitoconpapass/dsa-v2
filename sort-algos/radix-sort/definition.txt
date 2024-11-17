@@ -1,0 +1,95 @@
+DEFINITION: Is a non-comparative sorting algorithm. It avoids comparison by creating and distributing elements 
+            into buckets according to their radix.
+
+For elements with more than one significant digit, this bucketing process is repeated for each digit, while preserving 
+the ordering of the prior step, until all digits have been considered. 
+For this reason, 'radix sort' has also been called bucket sort and digital sort.
+
+- Typically Radix Sort uses counting sort as a subroutine to sort.
+- Radix Sort has linear time complexity which is better than O(n(log(n)) of comparative sorting algorithms
+
+>> Time Complexity: O d(n+k) // -> 'd' is the n° of digits that the maximum element the input array has
+>> Space Complexity: O(n+k)
+(where 'n' is the number of elements in the input array, and 'k' is the range of input)
+
+WORKING: 
+int arr[8] = {170, 45, 75, 90, 802, 24, 2, 66} 
+
+1. Take input array and find the MAX number in the array. 
+MAX = 802 (num. digits = 3)
+
+2. Define 10 queues each representing a bucket for each digit from 0 to 9
+   Q0   Q1   Q2   Q3   Q4   Q5   Q6   Q7   Q8   Q9
+|     |    |    |    |    |    |    |    |    |    |
+|     |    |    |    |    |    |    |    |    |    |
+
+3. Consider the least significant digit of each number in the list which to be sorted
+least significant: 170 -> 0,
+                    45 -> 5, 
+                    75 -> 5, 
+                    90 -> 0 ... (the last digit of the number)
+
+arr= {170, 45, 75, 90, 802, 24, 2, 66} 
+       0    5   5   0   2    4  2   6
+
+4. Insert each number into their respective queue based on the least significant digit
+arr= {170, 45, 75, 90, 802, 24, 2, 66} 
+       0    5   5   0   2    4  2   6
+
+- Take 170, least digit is 0, so it (the whole value) will go in queue 0
+
+   Q0       Q1   Q2     Q3    Q4     Q5     Q6     Q7   Q8   Q9
+|  90    |    |   2   |    |      |  75  |       |    |    |    |  
+|  170   |    |  802  |    |  24  |  45  |  66   |    |    |    |
+
+
+5. Group all the numbers from queue 0 to queue 9 in the order they have inserted into their respective queues
+- Starting from Q0, go on storing the elements in the array. REMEMBER: Queue rule is first in first out
+
+arr= {170, 90, 802, 2, 24, 45, 75, 66}  (The array is not sorted yet)
+
+6. Repeat from step 3 based on the next least significant digit
+- The next least significant digit is now: THE TENS. 
+(Do this in the new array: arr= {170, 90, 802, 2, 24, 45, 75, 66})
+
+next least significant: 170 -> 7,
+                        90 -> 9,
+                        802 -> 0,
+                        2 -> 0, // -> take it as 002
+                        24 -> 2 ...
+
+arr= {170, 90, 802, 2, 24, 45, 75, 66} 
+       7    9   0   0   2   4   7   6
+
+* Repeat steps 4 and 5...
+Step 4:
+   Q0   Q1   Q2   Q3   Q4   Q5   Q6    Q7     Q8    Q9
+|  2  |    |    |    |    |    |    |  75   |    |      |
+| 802 |    | 24 |    | 45 |    | 66 |  170  |    |  90  |
+
+Step 5:
+arr = {802, 2, 24, 45, 66, 170, 75, 90}
+
+- The next least significant digit is now: THE HUNDREDS.
+arr = {802, 2, 24, 45, 66, 170, 75, 90}
+        8   0   0   0   0   1    0   0   // -> least significant digit (hundreds)
+
+* Repeat steps 4 and 5 
+Step 4:
+   Q0    Q1    Q2   Q3   Q4   Q5   Q6   Q7   Q8     Q9
+| 90   |     |    |    |    |    |    |    |      |    |
+| 75   |     |    |    |    |    |    |    |      |    |
+| 66   |     |    |    |    |    |    |    |      |    |
+| 45   |     |    |    |    |    |    |    |      |    |
+| 24   |     |    |    |    |    |    |    |      |    |
+|  2   | 170 |    |    |    |    |    |    |  802 |    |
+
+Step 5:
+arr = {2, 24, 45, 66, 75, 90, 170, 802} 
+
+NOW THE ARRAY IS SORTED!
+
+(The number of times this has to be repeated depends on the number of digits of the max element of the array) 802 -> 3 digits -> 3 times
+
+7. Repeat from step 2 until all the numbers are grouped based on the most significant digit
+- As this exampe only contains HUNDREDS, the process will stop here. 
