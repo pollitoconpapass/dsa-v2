@@ -234,3 +234,10 @@ system("cls");
 ```cpp
 int size = sizeof(arr)/sizeof(arr[0]);
 ```
+
+- Get the complete string of the user's input (including spaces):
+```cpp
+string word;
+cout << "Enter a word: ";
+getline(cin, word);
+```
