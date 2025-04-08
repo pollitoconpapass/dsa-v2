@@ -241,3 +241,10 @@ string word;
 cout << "Enter a word: ";
 getline(cin, word);
 ```
+
+- C++ 11 Iterate way (new version)
+```cpp
+for(int i: arr){
+    cout << i << endl;
+}
+```
