@@ -1,0 +1,32 @@
+GRAPH TRAVERSAL TECHNIQUES
+
+DEFINITION: Refers to the process of visiting (checking / updating) each vertex in a graph. 
+            Such traversals are classified by the orders in which the vertices are visited. 
+
+ALGORITHMS:
+1. Breadth First Search (BFS)
+In this traversal algorithm one node is selected and then all the adjacent nodes are visited one by one. 
+After completing all of the adjacent nodes, it moves further to check another nodes and checks its adjacent nodes again.
+
+Steps:
+1) Define a queue
+2) Set start node 
+3) Add start node to the queue
+4) Print current node
+5) Add all neighbours (unvisited, not in queue) of the node to the queue
+6) Repeat from step 4 till queue empty
+
+
+2. Depth First Search (DFS)
+In this algorithm one starting node is given, and when an adjacent node is found, it moves to that adjacent node first and try
+to traverse in the same manner.
+
+Steps:
+1)Define a stack
+2) Set current node
+3) Add current node to stack
+4) Print current node
+5) Add any neighbour (unvisited, not in stack) of the node to the stack
+6) If current node has all its neighbours already visited, pop it from stack and backtrack to the previous node
+7) Check remaining nodes in the stack for any unvisited nodes
+8) Repeat till stack is empty
