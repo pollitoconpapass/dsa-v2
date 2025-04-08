@@ -1,0 +1,75 @@
+DEFINITION: Consists on a set of vertices (nodes) and set of edges (links) which connects nodes.
+
+
+DIFERENCES WITH TREES:
+* Trees:
+- Only one path between two nodes
+- Has a root node
+- Don't have loops
+- Have n-1 edges (n: n° of nodes)
+- Heriarchical model
+
+* Graphs:
+- Multiple paths between two nodes
+- Doesn't have a root node
+- CAN have loops
+- n° of edges not defined
+- Network model
+
+
+DIRECTED v UNDIRECTED GRAPHS:
+* Directed: 
+- Is a set of nodes connected by paths, with each node having a direction associated with it. Paths are represented by arrows
+
+* Undirected: 
+- In an undirected graph the nodes are bidirectional, with no direction associated. Hence, the graph can be transversal in either direction
+(The absence of arrows, tells us is an undirected graph)
+
+
+WEIGHTED v UNWEIGHTED GRAPHS:
+* Weighted Graphs:
+- Each branch (path) is given a numerical weight
+
+* Unweighted Graphs: 
+- All nodes/paths are considered to have the same weight
+
+
+PROPERTIES
+1. Adjacency: 
+Two nodes are adjacent if they are connected to each other through an edge. 
+
+2. Path:
+Represents a sequence of edges between the two vertices. (Path 2 follow to go from one node to another)
+
+3. Self-Loop:
+Is an edge that connects a node to itself.
+
+4. Multi edge:
+Two or more edges that are connecting to the same two nodes. (bidirectional)
+
+5. Simple graph:
+Graphs without loops or parallel edges.
+
+6. Degree of a node:
+The degree of a node is the n° of edges (links) attached on it.
+
+7. Simple path:
+A path is a simple path when no vertices (nodes) are repeated.
+
+8. Cycle:
+A cycle is the path which has no repeated edges or vertices except the first and the last vertices. (a->b->c->a)
+
+
+CALCULATE MAXIMUM n° OF EDGES (links) IN A GRAPH SYSTEM
+* Directed Graphs
+if(V=n){
+    0 <= E <= n(n-1)
+}
+
+* Undirected Graphs
+if(V=n){
+    0 <= E <= (n(n-1)) / 2
+}
+
+- Where: V = n° of vertices | E = n° of edges
+(Only applicable for a Simple Graph, NO multi edges or self loop)
